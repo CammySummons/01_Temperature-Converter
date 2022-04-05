@@ -1,8 +1,4 @@
-"""
-This is a copy of 09_History_GUI_v5 which is combined with the converter
-function from 09_History_GUI_v1 (copy of which was saved as v1b
-so allow adaption).
-"""
+# Changed the >= 7 to > 7 at line 178
 
 from tkinter import *
 from functools import partial  # To prevent unwanted windows
@@ -179,7 +175,7 @@ class History:
 
         # History output goes here... (row 2)
         history_string = ""
-        if len(calc_history) >= 7:
+        if len(calc_history) > 7:
             for item in range(0, 7):
                 history_string += calc_history[len(calc_history)-item-1]+"\n"
         else:
