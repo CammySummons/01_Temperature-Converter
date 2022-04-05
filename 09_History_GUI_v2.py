@@ -1,7 +1,4 @@
 """ Builds on 06_Convertor_v1
-Add list to hold calculation history at lines 17 - 18
-and append calculations to list on lines 127 - 129
-Use this file to generate the list of 7 items for version 2
 """
 
 from tkinter import *
@@ -15,7 +12,7 @@ class Converter:
         background_color = "light blue"
 
         # Initialise list to hold calculation history
-        self.all_calculations = []
+        self.all_calculations = ["1", "2", "3", "4", "5", "6"]
 
         # Converter Frame
         self.converter_frame = Frame(bg=background_color, pady=10)
