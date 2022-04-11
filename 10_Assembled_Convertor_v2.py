@@ -152,7 +152,7 @@ class History:
 
         # If users press cross at top, closes history and 'releases' history button
         self.history_box.protocol('WM_DELETE_WINDOW',
-                               partial(self.close_history, partner))
+                                  partial(self.close_history, partner))
 
         # Set up GUI Frame
         self.history_frame = Frame(self.history_box, width=300, bg=background)
