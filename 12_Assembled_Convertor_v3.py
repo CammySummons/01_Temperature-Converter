@@ -68,7 +68,8 @@ class Converter:
 
         self.history_button = Button(self.hist_help_frame, font="Arial 12 bold",
                                      text="Calculation History", width=15,
-                                     command=lambda: self.history(self.all_calc_list))
+                                     command=lambda: self.history
+                                     (self.all_calc_list))
         self.history_button.grid(row=0, column=0)
 
         if len(self.all_calc_list) == 0:
@@ -160,16 +161,17 @@ class History:
         # Sets up child window (history box)
         self.history_box = Toplevel()
 
-        # If users press cross at top, closes history and 'releases' history button
+        # If users press cross at top, closes history+'releases' history button
         self.history_box.protocol('WM_DELETE_WINDOW',
-                               partial(self.close_history, partner))
+                                  partial(self.close_history, partner))
 
         # Set up GUI Frame
         self.history_frame = Frame(self.history_box, width=300, bg=background)
         self.history_frame.grid()
 
         # Set up history heading (row 0)
-        self.how_heading = Label(self.history_frame, text="\nCalculation History",
+        self.how_heading = Label(self.history_frame,
+                                 text="\nCalculation History",
                                  font="arial 14 bold", bg=background)
         self.how_heading.grid(row=0)
 
@@ -180,7 +182,8 @@ class History:
                                        "create a text file of all your "
                                        "calculations for this session",
                                   justify=LEFT, width=40, bg=background,
-                                  wrap=250, font="arial 10 italic", fg="maroon")
+                                  wrap=250, font="arial 10 italic",
+                                  fg="maroon")
         self.history_text.grid(row=1)
 
         # History output goes here... (row 2)
@@ -208,13 +211,15 @@ class History:
 
         # Export Button
         self.export_button = Button(self.export_dismiss_frame, text="Export",
-                                    font="arial 10 bold", command=lambda: self.export(calc_history))
+                                    font="arial 10 bold",
+                                    command=lambda: self.export(calc_history))
         self.export_button.grid(row=0, column=0)
 
         # Dismiss Button
         self.dismiss_button = Button(self.export_dismiss_frame, text="Dismiss",
                                      font="arial 10 bold",
-                                     command=partial(self.close_history, partner))
+                                     command=partial
+                                     (self.close_history, partner))
         self.dismiss_button.grid(row=0, column=1)
 
     def close_history(self, partner):
@@ -236,7 +241,7 @@ class Export:
         # Sets up child window (export box)
         self.export_box = Toplevel()
 
-        # If users press cross at top, closes export and 'releases' export button
+        # If users press cross at top, closes export & 'releases' export button
         self.export_box.protocol('WM_DELETE_WINDOW',
                                  partial(self.close_export, partner))
 
@@ -254,22 +259,23 @@ class Export:
                                  text="Enter a file name in the box below and "
                                       "press the save button to save your "
                                       "calculation history to a text file",
-                                 justify=LEFT, width=40, bg=background, wrap=250)
+                                 justify=LEFT, width=40,
+                                 bg=background, wrap=250)
         self.export_text.grid(row=2, pady=10)
 
         # Warning text (label, row 1)
         self.export_text = Label(self.export_frame,
                                  text="If the file name you enter below "
-                                      "already exists, it's content will"
-                                      "be replaced with your calculation history",
+                                      "already exists, it's content will be "
+                                      "replaced with your calculation history",
                                  justify=LEFT, font="Arial 10 italic",
                                  bg="#ffafaf",  # Pink
                                  fg="maroon", wrap=225, padx=10, pady=10)
         self.export_text.grid(row=1)
 
         # Filename entry box (row 3)
-        self.filename_entry = Entry(self.export_frame, width=20, font="Arial 14 bold",
-                                    justify=CENTER)
+        self.filename_entry = Entry(self.export_frame, width=20,
+                                    font="Arial 14 bold", justify=CENTER)
         self.filename_entry.grid(row=3, pady=10)
 
         # Save / Cancel Frame (row 4)
@@ -283,11 +289,13 @@ class Export:
 
         # Save and cancel buttons (row 0 of save_cancel_frame)
         self.save_button = Button(self.save_cancel_frame, text="Save",
-                                  command=partial(lambda: self.save_history(partner, calc_history)))
+                                  command=partial(lambda: self.save_history
+                                  (partner, calc_history)))
         self.save_button.grid(row=0, column=0)
 
         self.cancel_button = Button(self.save_cancel_frame, text="Cancel",
-                                    command=partial(self.close_export, partner))
+                                    command=partial
+                                    (self.close_export, partner))
         self.cancel_button.grid(row=0, column=1)
 
     def save_history(self, partner, calc_history):
@@ -299,7 +307,7 @@ class Export:
 
         for letter in filename:
             if re.match(valid_char, letter):
-                continue  # If the letter is valid, goes back and checks the next
+                continue  # If the letter is valid, goes back and checks next
 
             elif letter == " ":  # Otherwise, find problems
                 problem = "(no spaces allowed)"
